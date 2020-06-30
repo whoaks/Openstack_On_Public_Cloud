@@ -22,11 +22,11 @@ mount -o loop RHEL7OSP-13.0-20180628.2-x86_64.iso /iso2/
 
 mkdir /softwares
 
-cp -rvf /updates/  /softwares/
+cp -rvf /iso/  /softwares/
 
-cp -rvf /additional/  /softwares/
+cp -rvf /iso1/  /softwares/
 
-cp -rvf /RHOSP/  /softwares/
+cp -rvf /iso2/  /softwares/
 
 yum install createrepo  -y
 
@@ -35,7 +35,7 @@ createrepo -v /softwares/.
 cat <<EOF > /etc/yum.repos.d/openstack.repo
 [Openstack]
 name=Openstack
-baseurl=file:///RHOSP13
+baseurl=file:///softwares
 gpgcheck=0
 EOF
 
